@@ -9,4 +9,5 @@
 
 ## 建议
 
-推荐安装一个 [EhViewr](https://github.com/seven332/EhViewer), 可以直接跳转过去查看。
+* 推荐安装一个 [EhViewr](https://github.com/seven332/EhViewer), 可以直接跳转过去查看。
+* 因用的推送，最好加入手机白名单
