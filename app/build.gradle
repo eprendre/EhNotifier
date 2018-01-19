@@ -8,8 +8,8 @@ android {
         applicationId "com.github.eprendre.ehentai.notifier"
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             abiFilters 'x86', 'armeabi-v7a'
@@ -58,6 +58,7 @@ dependencies {
     implementation 'android.arch.persistence.room:runtime:1.0.0'
     implementation 'android.arch.persistence.room:rxjava2:1.0.0'
     implementation 'com.github.bumptech.glide:glide:4.4.0'
+    implementation 'com.github.eprendre:StateLayout:v0.2'
     kapt 'com.github.bumptech.glide:compiler:4.4.0'
     kapt 'com.android.databinding:compiler:3.0.1'
     kapt 'android.arch.persistence.room:compiler:1.0.0'

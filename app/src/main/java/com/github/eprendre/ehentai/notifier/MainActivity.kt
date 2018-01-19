@@ -11,6 +11,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import com.baidu.android.pushservice.PushConstants
 import com.baidu.android.pushservice.PushManager
 import com.github.eprendre.ehentai.notifier.databinding.ActivityMainBinding
+import com.github.eprendre.ehentai.notifier.utils.MyStateLayout
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,11 @@ class MainActivity : AppCompatActivity() {
       }
       adapter.items = it
       adapter.notifyDataSetChanged()
+      if (it.isEmpty()) {
+        binding.stateLayout.displayedChildId = MyStateLayout.STATE_EMPTY
+      } else {
+        binding.stateLayout.displayedChildId = MyStateLayout.STATE_CONTENT
+      }
     })
     viewModel.itemClickCommand.observe(this, Observer {
       if (it == null) {

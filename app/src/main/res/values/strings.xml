@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EhNotifier</string>
+    <string name="state_empty">There are no items, please wait for push notification.</string>
 </resources>

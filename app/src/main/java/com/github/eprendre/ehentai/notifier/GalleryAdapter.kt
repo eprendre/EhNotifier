@@ -13,8 +13,7 @@ import com.github.eprendre.ehentai.notifier.utils.getLayoutInflater
 /**
  * Created by eprendre on 19/01/2018.
  */
-class GalleryAdapter(var items: List<Gallery>, val viewModel: MainViewModel) : RecyclerView.Adapter<GalleryAdapter
-.ViewHolder>() {
+class GalleryAdapter(var items: List<Gallery>, val viewModel: MainViewModel) : RecyclerView.Adapter<GalleryAdapter.ViewHolder>() {
   init {
     setHasStableIds(true)
   }
