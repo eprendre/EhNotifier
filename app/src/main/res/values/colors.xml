@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="primary_text">#FF363D42</color>
+    <color name="secondary_text">#757575</color>
+    <color name="colorCOSPLAY">#673AB7</color>
+    <color name="colorMANGA">#FFC107</color>
+    <color name="colorDOUJINSHI">#F44336</color>
+    <color name="colorNONH">#03A9F4</color>
+    <color name="colorMISC">#607D8B</color>
+</resources>
