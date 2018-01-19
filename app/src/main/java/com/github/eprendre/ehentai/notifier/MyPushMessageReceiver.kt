@@ -13,6 +13,7 @@ import android.util.Log
 import com.baidu.android.pushservice.PushManager
 import com.baidu.android.pushservice.PushMessageReceiver
 import com.github.eprendre.ehentai.notifier.db.Gallery
+import com.github.eprendre.ehentai.notifier.utils.hour
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import io.reactivex.Single
@@ -136,11 +137,12 @@ class MyPushMessageReceiver : PushMessageReceiver() {
 
   @SuppressLint("NewApi")
   private fun showNotification(context: Context, galleryList: List<Gallery>, notificationId: Int) {
+    val isSilent = System.currentTimeMillis().hour().toInt() < 8//silent from 0:00 to 8:00
     val mNotifyMgr = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     val NOTIFICATION_CHANNEL_ID = "my_channel_id_01"
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       val notificationChannel = NotificationChannel(NOTIFICATION_CHANNEL_ID, "My Notifications",
-          NotificationManager.IMPORTANCE_DEFAULT)
+          if (isSilent) NotificationManager.IMPORTANCE_LOW else NotificationManager.IMPORTANCE_DEFAULT)
 
       notificationChannel.description = "Channel description"
       notificationChannel.enableLights(true)
@@ -157,7 +159,12 @@ class MyPushMessageReceiver : PushMessageReceiver() {
         .setContentText("${galleryList[0].name} published")
         .setContentIntent(resultPendingIntent)
         .setAutoCancel(true)
-        .setDefaults(Notification.DEFAULT_ALL)
+
+    if (isSilent) {
+      builder.setDefaults(Notification.DEFAULT_LIGHTS)
+    } else {
+      builder.setDefaults(Notification.DEFAULT_ALL)
+    }
 
     mNotifyMgr.notify(notificationId, builder.build())
   }
