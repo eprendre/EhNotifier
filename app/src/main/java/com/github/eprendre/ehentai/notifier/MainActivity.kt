@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
     binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
     binding.recyclerView.adapter = adapter
     viewModel.galleries.observe(this, Observer {
