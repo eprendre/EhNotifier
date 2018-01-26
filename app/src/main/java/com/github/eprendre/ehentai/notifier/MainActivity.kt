@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.StaggeredGridLayoutManager
+import android.view.WindowManager
 import com.baidu.android.pushservice.PushConstants
 import com.baidu.android.pushservice.PushManager
 import com.github.eprendre.ehentai.notifier.databinding.ActivityMainBinding
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
     binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
     binding.recyclerView.adapter = adapter
     viewModel.galleries.observe(this, Observer {
