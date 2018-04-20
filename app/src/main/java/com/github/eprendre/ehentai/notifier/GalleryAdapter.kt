@@ -31,8 +31,8 @@ class GalleryAdapter(var items: List<Gallery>, val viewModel: MainViewModel) : R
     return items.size
   }
 
-  override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-    holder?.apply {
+  override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    holder.apply {
       val item = items[position]
       binding.item = item
       binding.handler = GalleryAdapterHandler(item, viewModel)

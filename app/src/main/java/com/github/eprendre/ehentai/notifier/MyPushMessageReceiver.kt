@@ -106,16 +106,22 @@ class MyPushMessageReceiver : PushMessageReceiver() {
     Log.d(TAG, messageString)
 
     Single
-        .create<List<Gallery>> {
+        .create<List<Gallery>> { emitter ->
           val list = Gson().fromJson<List<Gallery>>(message, object : TypeToken<List<Gallery>>() {}.type)
-          it.onSuccess(list)
+          emitter.onSuccess(list)
         }
         .subscribeOn(Schedulers.io())
         .map {
-          it.reversed().filter {
-            when (it.category) {
-              Category.COSPLAY -> return@filter it.rating >= 4
-              Category.MANGA -> return@filter it.rating >= 4 && it.name.contains("chinese", ignoreCase = true)
+          it.reversed().filter { gallery ->
+            when (gallery.category) {
+              Category.COSPLAY -> return@filter gallery.rating >= 4
+              Category.MANGA -> {
+                val mangaKeywords = listOf("chinese")
+                return@filter gallery.rating >= 4
+                    && (mangaKeywords.isEmpty() || mangaKeywords.any { keyword -> gallery.name.contains(keyword, ignoreCase = true)
+                })
+              }
+
               else -> return@filter false
             }
           }
